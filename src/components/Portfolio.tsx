@@ -1,67 +1,70 @@
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
+import { Button } from "@/components/ui/button";
 
 const Portfolio = () => {
   const projects = [
     {
       image: project1,
-      title: "MINIMAL RESIDENCE",
-      location: "NEW YORK, 2024",
-      description: "A contemporary home focusing on light, space, and material honesty"
+      title: "CAMPAGNE CORPORATE",
+      category: "BRANDING",
+      description: "Identité visuelle complète et campagne de communication pour une entreprise leader"
     },
     {
       image: project2,
-      title: "CORPORATE HEADQUARTERS",
-      location: "LONDON, 2023",
-      description: "Modern office space emphasizing collaboration and natural elements"
+      title: "PRODUCTION AUDIOVISUELLE",
+      category: "VIDÉO",
+      description: "Film institutionnel et spots publicitaires pour une marque nationale"
     },
     {
       image: project3,
-      title: "CULTURAL CENTER",
-      location: "TOKYO, 2023",
-      description: "Public architecture that bridges tradition with contemporary design"
+      title: "ÉVÉNEMENT D'ENTREPRISE",
+      category: "ÉVÉNEMENTIEL",
+      description: "Conception et organisation d'un gala annuel avec scénographie complète"
     }
   ];
 
   return (
-    <section id="work" className="py-32 bg-muted">
+    <section id="work" className="py-24 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
-            <h2 className="text-minimal text-muted-foreground mb-4">SELECTED WORK</h2>
-            <h3 className="text-4xl md:text-6xl font-light text-architectural">
-              Our Projects
-            </h3>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+            <div>
+              <p className="text-minimal text-primary mb-4">PRINT'S ZONE</p>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand">
+                Nos <span className="text-primary">conquêtes</span>
+              </h2>
+            </div>
+            <Button variant="outline" className="mt-6 md:mt-0 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              Voir tout le portfolio
+            </Button>
           </div>
           
-          <div className="space-y-32">
+          <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="group">
-                <div className="relative overflow-hidden">
+              <div key={index} className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-xl">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-[70vh] object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <span className="text-minimal text-primary font-semibold">
+                      {project.category}
+                    </span>
+                    <h3 className="text-xl font-heading font-bold text-white mt-2">
+                      {project.title}
+                    </h3>
+                  </div>
                 </div>
                 
-                <div className="mt-8 grid md:grid-cols-3 gap-8">
-                  <div>
-                    <h4 className="text-2xl font-light text-architectural mb-2">
-                      {project.title}
-                    </h4>
-                    <p className="text-minimal text-muted-foreground">
-                      {project.location}
-                    </p>
-                  </div>
-                  
-                  <div className="md:col-span-2">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
+                <div className="mt-4">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
               </div>
             ))}
