@@ -18,7 +18,7 @@ const Navigation = () => {
           <img 
             src={isDark ? logoWhite : logoDark} 
             alt="Print's Arts Multimedia" 
-            className="h-10 md:h-12" 
+            className="h-12 md:h-16" 
           />
         </a>
         
@@ -39,8 +39,8 @@ const Navigation = () => {
 
         <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
-          <Button className="bg-foreground hover:bg-foreground/90 text-background font-medium rounded-full px-6">
-            Ping Us
+          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full px-6">
+            <a href="/contact">Demander un Devis</a>
           </Button>
         </div>
 
@@ -73,8 +73,8 @@ const Navigation = () => {
             
             <div className="pt-4 border-t border-border flex items-center gap-4">
               <ThemeToggle />
-              <Button className="bg-foreground hover:bg-foreground/90 text-background font-medium rounded-full flex-1">
-                Ping Us
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full flex-1">
+                <a href="/contact">Demander un Devis</a>
               </Button>
             </div>
           </div>

@@ -1,13 +1,19 @@
-import clientLogos from "@/assets/client-logos.png";
 import { motion } from "framer-motion";
+
+const clients = [
+  "PETROCI", "CÔTE D'IVOIRE EXPORT", "BAD", "SIDAAL", "TEYLIOM PROPERTIES",
+  "URBANEA", "BAAB", "NOOM HOTELS", "LA ROUTE AFRICAINE", "JETOUR",
+  "MG MOTORS", "CHANGAN", "NOURRIVOIRE", "GBAT", "DAVCOM",
+  "GROUPE ATLANTIQUE", "MARAZ", "FAFCI", "MASA", "CHILDREN OF AFRICA"
+];
 
 const ClientLogos = () => {
   return (
-    <section className="py-20 bg-muted/50 overflow-hidden">
+    <section className="py-20 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <motion.p 
-            className="text-minimal text-muted-foreground mb-4"
+            className="text-minimal text-primary mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -23,23 +29,53 @@ const ClientLogos = () => {
           >
             Une sélection de nos <span className="text-primary">conquêtes</span>
           </motion.h2>
+          <motion.p
+            className="text-muted-foreground mt-4 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Des entreprises leaders en Côte d'Ivoire et en Afrique qui nous font confiance 
+            pour leur communication et leur image de marque.
+          </motion.p>
         </div>
       </div>
       
-      {/* Scrolling Logos */}
-      <div className="relative">
+      {/* Scrolling Logos - First Row */}
+      <div className="relative mb-4">
         <div className="flex animate-marquee">
-          {[...Array(3)].map((_, i) => (
-            <motion.img
-              key={i}
-              src={clientLogos}
-              alt="Nos clients partenaires"
-              className="h-16 md:h-20 object-contain px-8 opacity-70 hover:opacity-100 transition-opacity"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 0.7 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            />
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-10 px-5">
+              {clients.slice(0, 10).map((client, index) => (
+                <motion.span
+                  key={`${i}-${index}`}
+                  className="text-2xl md:text-3xl font-heading font-bold text-muted-foreground/40 hover:text-primary whitespace-nowrap transition-colors duration-300 cursor-default"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {client}
+                </motion.span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Scrolling Logos - Second Row (Reverse) */}
+      <div className="relative">
+        <div className="flex animate-marquee-reverse">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-10 px-5">
+              {clients.slice(10, 20).map((client, index) => (
+                <motion.span
+                  key={`${i}-${index}`}
+                  className="text-2xl md:text-3xl font-heading font-bold text-muted-foreground/40 hover:text-primary whitespace-nowrap transition-colors duration-300 cursor-default"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {client}
+                </motion.span>
+              ))}
+            </div>
           ))}
         </div>
       </div>
