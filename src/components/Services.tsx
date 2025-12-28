@@ -4,91 +4,78 @@ const Services = () => {
   const services = [
     {
       icon: Palette,
-      number: "01",
-      title: "DESIGN GRAPHIQUE",
-      description: "Création de visuels impactants : logos, flyers, affiches, brochures, packaging et identité visuelle complète"
-    },
-    {
-      icon: Box,
-      number: "02", 
-      title: "RÉALISATIONS 3D",
-      description: "Modélisation et rendu 3D pour vos projets architecturaux, produits et animations visuelles immersives"
-    },
-    {
-      icon: Smartphone,
-      number: "03",
-      title: "APPLICATIONS MOBILES",
-      description: "Développement d'applications iOS et Android sur mesure pour digitaliser votre activité"
-    },
-    {
-      icon: Signpost,
-      number: "04",
-      title: "BRANDING & ENSEIGNES",
-      description: "Conception et réalisation d'enseignes lumineuses, habillage de véhicules et signalétique"
-    },
-    {
-      icon: Printer,
-      number: "05",
-      title: "IMPRESSION",
-      description: "Impression sur tous supports : bâches, roll-ups, kakemonos, textiles, objets publicitaires"
+      title: "Design",
+      description: "Le design est l'API entre la vision et la réalité. Logos, identité visuelle, packaging."
     },
     {
       icon: Video,
-      number: "06",
-      title: "PRODUCTION AUDIOVISUELLE",
-      description: "Réalisation de films institutionnels, spots publicitaires, motion design et captation événementielle"
+      title: "Animation",
+      description: "Motion design, films institutionnels, spots publicitaires et FOOH animations virales."
     },
     {
       icon: Globe,
-      number: "07",
-      title: "CRÉATION WEB",
-      description: "Sites web modernes et responsive, e-commerce, référencement SEO et stratégie digitale"
-    },
-    {
-      icon: PartyPopper,
-      number: "08",
-      title: "ÉVÉNEMENTIEL",
-      description: "Organisation complète d'événements : conception, décoration, scénographie et coordination"
+      title: "Technologie",
+      description: "Sites web, applications mobiles, solutions digitales sur mesure."
     }
   ];
 
+  const allServices = [
+    { icon: Palette, name: "Design graphique" },
+    { icon: Box, name: "Réalisations 3D" },
+    { icon: Smartphone, name: "Applications mobiles" },
+    { icon: Signpost, name: "Branding & enseignes" },
+    { icon: Printer, name: "Impression" },
+    { icon: Video, name: "Production audiovisuelle" },
+    { icon: Globe, name: "Création web" },
+    { icon: PartyPopper, name: "Événementiel" }
+  ];
+
   return (
-    <section id="services" className="py-24 bg-muted/30">
+    <section id="services" className="py-32 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-minimal text-primary mb-4">NOS EXPERTISES</p>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand mb-6">
-              Des solutions complètes pour votre <span className="text-primary">communication</span>
+          {/* Section Header */}
+          <div className="mb-20">
+            <p className="text-minimal text-muted-foreground mb-4">NOS SERVICES</p>
+            <h2 className="text-display text-4xl md:text-5xl lg:text-6xl max-w-4xl">
+              Le design est l'API entre vision et réalité. Considérez-nous comme 
+              <span className="text-primary"> votre passerelle</span>.
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Une agence globale et spécialisée intervenant dans le marketing, la publicité, 
-              les médias et le digital.
-            </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Main Services Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
             {services.map((service, index) => (
               <div 
                 key={index} 
-                className="group service-card bg-card p-6 rounded-xl border border-border hover:border-primary/30"
+                className="group p-8 rounded-2xl border border-border hover:border-primary/30 hover:bg-muted/30 transition-all duration-500 hover-lift"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-minimal text-muted-foreground">
-                    {service.number}
-                  </span>
+                <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                  <service.icon className="w-7 h-7 text-foreground group-hover:text-primary transition-colors" />
                 </div>
-                <h3 className="text-lg font-heading font-semibold mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-heading font-bold mb-4">
                   {service.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* All Services List */}
+          <div className="border-t border-border pt-12">
+            <p className="text-minimal text-muted-foreground mb-8">TOUTES NOS EXPERTISES</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {allServices.map((service, index) => (
+                <div key={index} className="flex items-center gap-3 group cursor-pointer">
+                  <service.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                    {service.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

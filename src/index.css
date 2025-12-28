@@ -1,110 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Print's Arts Multimedia Design System - Orange & Blue Excellence */
+/* Print's Arts Multimedia - Kaanari Inspired Design System */
 
 @layer base {
   :root {
-    /* Printsarts Brand Palette */
+    /* Clean Light Mode */
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --foreground: 0 0% 8%;
     
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 0 0% 8%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 0 0% 8%;
     
-    /* Primary: Printsarts Orange */
-    --primary: 24 95% 53%;
+    /* Primary: Printsarts Red Accent */
+    --primary: 0 85% 45%;
     --primary-foreground: 0 0% 100%;
     
-    /* Secondary: Printsarts Blue */
-    --secondary: 220 80% 50%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Subtle Gray */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 8%;
     
-    /* Muted: Subtle Gray-Blue */
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 40%;
+    /* Muted */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
     
-    /* Accent: Light Orange */
-    --accent: 24 90% 95%;
-    --accent-foreground: 24 95% 40%;
+    /* Accent */
+    --accent: 0 85% 96%;
+    --accent-foreground: 0 85% 35%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 220 15% 90%;
-    --input: 220 15% 95%;
-    --ring: 24 95% 53%;
+    --border: 0 0% 92%;
+    --input: 0 0% 96%;
+    --ring: 0 85% 45%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 220 15% 98%;
-    --sidebar-foreground: 220 20% 26%;
-    --sidebar-primary: 24 95% 53%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 26%;
+    --sidebar-primary: 0 85% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 95%;
-    --sidebar-accent-foreground: 220 20% 10%;
-    --sidebar-border: 220 15% 91%;
-    --sidebar-ring: 24 95% 53%;
-    
-    /* Printsarts Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 80% 20% / 0.9), hsl(24 95% 40% / 0.7));
-    --gradient-overlay: linear-gradient(180deg, hsl(220 80% 15% / 0.85), hsl(24 95% 40% / 0.4));
-    --gradient-primary: linear-gradient(135deg, hsl(24 95% 53%), hsl(24 95% 65%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 80% 50%), hsl(220 80% 65%));
-    
-    /* Elegant Shadows */
-    --shadow-primary: 0 25px 50px -12px hsl(24 95% 53% / 0.25);
-    --shadow-elegant: 0 10px 30px -10px hsl(220 80% 20% / 0.15);
-    
-    /* Smooth Transitions */
-    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 91%;
+    --sidebar-ring: 0 85% 45%;
   }
 
   .dark {
-    --background: 220 20% 8%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 98%;
     
-    --card: 220 20% 12%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
     
-    --popover: 220 20% 12%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
     
-    --primary: 24 95% 55%;
+    --primary: 0 85% 50%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 220 80% 55%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
     
-    --muted: 220 20% 15%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
     
-    --accent: 24 90% 15%;
-    --accent-foreground: 24 95% 70%;
+    --accent: 0 85% 15%;
+    --accent-foreground: 0 85% 70%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 220 20% 20%;
-    --input: 220 20% 15%;
-    --ring: 24 95% 55%;
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 0 85% 50%;
     
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 220 10% 95%;
-    --sidebar-primary: 24 95% 55%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 85% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 20% 18%;
-    --sidebar-accent-foreground: 220 10% 95%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 24 95% 55%;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(220 80% 10% / 0.95), hsl(24 95% 30% / 0.6));
-    --gradient-overlay: linear-gradient(180deg, hsl(220 80% 8% / 0.9), hsl(24 95% 30% / 0.3));
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 85% 50%;
   }
 }
 
@@ -117,34 +102,41 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
   
-  /* Brand Typography */
-  .text-brand {
-    @apply tracking-[-0.02em] leading-[1.1];
+  /* Kaanari Typography Style */
+  .text-display {
+    @apply font-heading font-bold tracking-tight leading-[0.95];
   }
   
   .text-minimal {
-    @apply tracking-wide uppercase text-xs font-semibold;
+    @apply tracking-[0.15em] uppercase text-xs font-medium;
+  }
+
+  .text-body {
+    @apply font-sans text-muted-foreground leading-relaxed;
   }
   
-  /* Hero Image Overlay */
-  .hero-overlay {
-    background: var(--gradient-overlay);
+  /* Grid Pattern Background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
-  
-  /* Brand Button Glow */
-  .btn-glow {
-    box-shadow: 0 0 30px hsl(24 95% 53% / 0.4);
-  }
-  
-  /* Smooth Reveal Animation */
+
+  /* Smooth Animations */
   .reveal {
-    @apply opacity-0 translate-y-8;
-    animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    @apply opacity-0 translate-y-6;
+    animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .reveal-delayed {
-    @apply opacity-0 translate-y-8;
-    animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    @apply opacity-0 translate-y-6;
+    animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  .reveal-delayed-2 {
+    @apply opacity-0 translate-y-6;
+    animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
   
   @keyframes reveal {
@@ -152,14 +144,50 @@
       @apply opacity-100 translate-y-0;
     }
   }
-  
-  /* Service Card Hover */
-  .service-card {
+
+  /* Marquee Animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
     @apply transition-all duration-500;
   }
-  
-  .service-card:hover {
-    @apply shadow-lg;
-    transform: translateY(-4px);
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+  }
+
+  /* Image zoom on hover */
+  .img-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .group:hover .img-zoom {
+    transform: scale(1.05);
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
   }
 }
