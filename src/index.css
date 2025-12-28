@@ -2,68 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Minimal Architecture Design System - Black & White Excellence */
+/* Print's Arts Multimedia Design System - Orange & Blue Excellence */
 
 @layer base {
   :root {
-    /* Pure Architecture Palette */
+    /* Printsarts Brand Palette */
     --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --foreground: 220 20% 10%;
     
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 220 20% 10%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 220 20% 10%;
     
-    /* Primary: Pure Black */
-    --primary: 0 0% 0%;
+    /* Primary: Printsarts Orange */
+    --primary: 24 95% 53%;
     --primary-foreground: 0 0% 100%;
     
-    /* Secondary: Pure White */
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 0 0% 0%;
+    /* Secondary: Printsarts Blue */
+    --secondary: 220 80% 50%;
+    --secondary-foreground: 0 0% 100%;
     
-    /* Muted: Subtle Gray */
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 20%;
+    /* Muted: Subtle Gray-Blue */
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 40%;
     
-    /* Accent: Elegant Gray */
-    --accent: 0 0% 95%;
-    --accent-foreground: 0 0% 0%;
+    /* Accent: Light Orange */
+    --accent: 24 90% 95%;
+    --accent-foreground: 24 95% 40%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 90%;
-    --input: 0 0% 95%;
-    --ring: 0 0% 0%;
+    --border: 220 15% 90%;
+    --input: 220 15% 95%;
+    --ring: 24 95% 53%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 15% 98%;
+    --sidebar-foreground: 220 20% 26%;
+    --sidebar-primary: 24 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 15% 91%;
+    --sidebar-ring: 24 95% 53%;
     
-    /* Architecture Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0% / 0.8), hsl(0 0% 0% / 0.4));
-    --gradient-overlay: linear-gradient(180deg, hsl(0 0% 0% / 0.9), hsl(0 0% 0% / 0.1));
+    /* Printsarts Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 80% 20% / 0.9), hsl(24 95% 40% / 0.7));
+    --gradient-overlay: linear-gradient(180deg, hsl(220 80% 15% / 0.85), hsl(24 95% 40% / 0.4));
+    --gradient-primary: linear-gradient(135deg, hsl(24 95% 53%), hsl(24 95% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 80% 50%), hsl(220 80% 65%));
     
     /* Elegant Shadows */
-    --shadow-architectural: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
-    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.15);
+    --shadow-primary: 0 25px 50px -12px hsl(24 95% 53% / 0.25);
+    --shadow-elegant: 0 10px 30px -10px hsl(220 80% 20% / 0.15);
     
     /* Smooth Transitions */
     --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -71,41 +66,45 @@
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 220 20% 8%;
+    --foreground: 0 0% 98%;
     
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 98%;
     
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 98%;
     
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 24 95% 55%;
+    --primary-foreground: 0 0% 100%;
     
-    --secondary: 0 0% 10%;
+    --secondary: 220 80% 55%;
     --secondary-foreground: 0 0% 100%;
     
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 65%;
     
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 24 90% 15%;
+    --accent-foreground: 24 95% 70%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 15%;
-    --input: 0 0% 10%;
-    --ring: 0 0% 100%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 220 20% 20%;
+    --input: 220 20% 15%;
+    --ring: 24 95% 55%;
+    
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 24 95% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 24 95% 55%;
+    
+    --gradient-hero: linear-gradient(135deg, hsl(220 80% 10% / 0.95), hsl(24 95% 30% / 0.6));
+    --gradient-overlay: linear-gradient(180deg, hsl(220 80% 8% / 0.9), hsl(24 95% 30% / 0.3));
   }
 }
 
@@ -118,18 +117,23 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
   
-  /* Architectural Typography */
-  .text-architectural {
+  /* Brand Typography */
+  .text-brand {
     @apply tracking-[-0.02em] leading-[1.1];
   }
   
   .text-minimal {
-    @apply tracking-wide uppercase text-xs font-medium;
+    @apply tracking-wide uppercase text-xs font-semibold;
   }
   
   /* Hero Image Overlay */
   .hero-overlay {
     background: var(--gradient-overlay);
+  }
+  
+  /* Brand Button Glow */
+  .btn-glow {
+    box-shadow: 0 0 30px hsl(24 95% 53% / 0.4);
   }
   
   /* Smooth Reveal Animation */
@@ -147,5 +151,15 @@
     to {
       @apply opacity-100 translate-y-0;
     }
+  }
+  
+  /* Service Card Hover */
+  .service-card {
+    @apply transition-all duration-500;
+  }
+  
+  .service-card:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
   }
 }
