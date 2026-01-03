@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, ArrowRight, Send, Facebook, Instagram, Linkedin } 
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,16 +15,39 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les plus brefs délais.",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      company: formData.get('company') as string,
+      service: formData.get('service') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: data
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous répondrons dans les plus brefs délais.",
+      });
+      
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -144,6 +168,7 @@ const Contact = () => {
                   <div>
                     <label className="text-minimal text-background/60 mb-2 block">Nom *</label>
                     <Input 
+                      name="name"
                       required
                       placeholder="Votre nom" 
                       className="bg-background/10 border-background/20 text-background placeholder:text-background/40 rounded-xl focus:border-primary focus:ring-primary"
@@ -152,6 +177,7 @@ const Contact = () => {
                   <div>
                     <label className="text-minimal text-background/60 mb-2 block">Email *</label>
                     <Input 
+                      name="email"
                       type="email"
                       required
                       placeholder="votre@email.com" 
@@ -164,6 +190,7 @@ const Contact = () => {
                   <div>
                     <label className="text-minimal text-background/60 mb-2 block">Téléphone</label>
                     <Input 
+                      name="phone"
                       type="tel"
                       placeholder="+225 XX XX XX XX" 
                       className="bg-background/10 border-background/20 text-background placeholder:text-background/40 rounded-xl focus:border-primary focus:ring-primary"
@@ -172,6 +199,7 @@ const Contact = () => {
                   <div>
                     <label className="text-minimal text-background/60 mb-2 block">Entreprise</label>
                     <Input 
+                      name="company"
                       placeholder="Nom de votre entreprise" 
                       className="bg-background/10 border-background/20 text-background placeholder:text-background/40 rounded-xl focus:border-primary focus:ring-primary"
                     />
@@ -181,6 +209,7 @@ const Contact = () => {
                 <div>
                   <label className="text-minimal text-background/60 mb-2 block">Service souhaité *</label>
                   <Input 
+                    name="service"
                     required
                     placeholder="Design, Branding, Web, Audiovisuel..." 
                     className="bg-background/10 border-background/20 text-background placeholder:text-background/40 rounded-xl focus:border-primary focus:ring-primary"
@@ -190,6 +219,7 @@ const Contact = () => {
                 <div>
                   <label className="text-minimal text-background/60 mb-2 block">Décrivez votre projet *</label>
                   <Textarea 
+                    name="message"
                     required
                     placeholder="Parlez-nous de votre projet, vos objectifs, votre budget estimé..." 
                     rows={5}

@@ -37,7 +37,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-display leading-[0.95] mb-8">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] mb-8">
             Du rêve au déploiement, nous donnons vie aux idées des{" "}
             <span className="text-primary">conquérants</span> grâce à un design percutant.
           </h1>

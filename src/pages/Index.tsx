@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Portfolio from "@/components/Portfolio";
 import ClientLogos from "@/components/ClientLogos";
 import Contact from "@/components/Contact";
+import ChatbotWidget from "@/components/ChatbotWidget";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       <About />
       <Portfolio />
       <Contact />
+      <ChatbotWidget />
     </motion.div>
   );
 };
