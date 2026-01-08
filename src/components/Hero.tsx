@@ -64,7 +64,7 @@ const Hero = () => {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="group" asChild>
-              <a href="tel:+22527222222">
+              <a href="tel:+2250709779679">
                 <Phone className="mr-2 h-4 w-4" />
                 Nous Appeler
               </a>
