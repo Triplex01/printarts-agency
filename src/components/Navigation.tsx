@@ -13,16 +13,16 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 py-3 md:py-4 flex items-center justify-between">
         <a href="/" className="flex items-center">
           <img 
             src={isDark ? logoWhite : logoDark} 
             alt="Print's Arts Multimedia" 
-            className="h-12 md:h-16" 
+            className="h-10 sm:h-12 lg:h-16" 
           />
         </a>
         
-        <div className="hidden md:flex items-center space-x-10">
+        <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
           <a href="/portfolio" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline">
             Portfolio
           </a>
@@ -37,43 +37,44 @@ const Navigation = () => {
           </a>
         </div>
 
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
           <ThemeToggle />
-          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full px-6">
+          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full px-4 xl:px-6 text-sm">
             <a href="/contact">Demander un Devis</a>
           </Button>
         </div>
 
-        <Button
-          variant="ghost"
-          size="sm"
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? '✕' : '☰'}
-        </Button>
+        <div className="flex lg:hidden items-center gap-2">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? '✕' : '☰'}
+          </Button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile & Tablet Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border">
-          <div className="container mx-auto px-6 py-6 space-y-4">
-            <a href="/portfolio" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+        <div className="lg:hidden bg-background border-t border-border">
+          <div className="container mx-auto px-4 sm:px-6 py-6 space-y-4">
+            <a href="/portfolio" className="block text-base text-muted-foreground hover:text-foreground transition-colors duration-300 py-2">
               Portfolio
             </a>
-            <a href="/services" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <a href="/services" className="block text-base text-muted-foreground hover:text-foreground transition-colors duration-300 py-2">
               Services
             </a>
-            <a href="/about" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <a href="/about" className="block text-base text-muted-foreground hover:text-foreground transition-colors duration-300 py-2">
               À propos
             </a>
-            <a href="/contact" className="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <a href="/contact" className="block text-base text-muted-foreground hover:text-foreground transition-colors duration-300 py-2">
               Contact
             </a>
             
-            <div className="pt-4 border-t border-border flex items-center gap-4">
-              <ThemeToggle />
-              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full flex-1">
+            <div className="pt-4 border-t border-border">
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full w-full">
                 <a href="/contact">Demander un Devis</a>
               </Button>
             </div>

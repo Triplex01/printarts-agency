@@ -50,18 +50,18 @@ const Portfolio = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16">
-        <div className="container mx-auto px-6">
+      <section className="pt-24 md:pt-32 pb-12 md:pb-16">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.p 
-              className="text-minimal text-primary mb-4"
+              className="text-minimal text-primary mb-3 md:mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
               NOTRE PORTFOLIO
             </motion.p>
             <motion.h1 
-              className="text-display text-5xl md:text-7xl lg:text-8xl mb-8"
+              className="text-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
@@ -69,7 +69,7 @@ const Portfolio = () => {
               Nos <span className="text-primary">réalisations</span>
             </motion.h1>
             <motion.p 
-              className="text-xl text-muted-foreground max-w-2xl"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -82,11 +82,11 @@ const Portfolio = () => {
       </section>
 
       {/* Filter Categories */}
-      <section className="pb-12">
-        <div className="container mx-auto px-6">
+      <section className="pb-8 md:pb-12">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div 
-              className="flex flex-wrap gap-6 justify-center md:justify-start"
+              className="flex flex-wrap gap-2 sm:gap-4 md:gap-6 justify-center md:justify-start"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -95,7 +95,7 @@ const Portfolio = () => {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`text-minimal transition-all duration-300 relative group px-4 py-2 rounded-full ${
+                  className={`text-xs sm:text-minimal transition-all duration-300 relative group px-3 sm:px-4 py-1.5 sm:py-2 rounded-full ${
                     activeCategory === category 
                       ? "bg-primary text-primary-foreground" 
                       : "text-muted-foreground hover:text-foreground bg-muted hover:bg-muted/80"
@@ -110,11 +110,11 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Masonry Grid */}
-      <section className="pb-20">
-        <div className="container mx-auto px-6">
+      <section className="pb-16 md:pb-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div 
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4"
               layout
             >
               <AnimatePresence mode="popLayout">
@@ -126,8 +126,8 @@ const Portfolio = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className={`group cursor-pointer relative overflow-hidden rounded-xl ${
-                      index % 5 === 0 ? "row-span-2" : ""
+                    className={`group cursor-pointer relative overflow-hidden rounded-lg md:rounded-xl ${
+                      index % 5 === 0 ? "md:row-span-2" : ""
                     }`}
                     onClick={() => setSelectedProject(project)}
                   >
@@ -140,17 +140,17 @@ const Portfolio = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                       
                       {/* Hover Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                        <span className="text-xs text-primary font-medium">{project.category}</span>
-                        <h3 className="text-lg font-heading font-bold text-background">
+                      <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <span className="text-[10px] sm:text-xs text-primary font-medium">{project.category}</span>
+                        <h3 className="text-sm sm:text-base md:text-lg font-heading font-bold text-background line-clamp-1">
                           {project.title}
                         </h3>
-                        <p className="text-sm text-background/70">{project.client}</p>
+                        <p className="text-xs text-background/70 hidden sm:block">{project.client}</p>
                       </div>
                       
                       {/* Arrow Icon */}
-                      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background flex items-center justify-center opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
-                        <ArrowUpRight className="w-5 h-5 text-foreground" />
+                      <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-background flex items-center justify-center opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
+                        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
                       </div>
                     </div>
                   </motion.div>
@@ -168,14 +168,14 @@ const Portfolio = () => {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/90 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-foreground/90 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              className="relative max-w-4xl w-full bg-background rounded-2xl overflow-hidden"
+              className="relative max-w-4xl w-full bg-background rounded-xl md:rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
@@ -183,21 +183,21 @@ const Portfolio = () => {
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-foreground/80 text-background flex items-center justify-center hover:bg-foreground transition-colors"
+                className="absolute top-3 right-3 md:top-4 md:right-4 z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-foreground/80 text-background flex items-center justify-center hover:bg-foreground transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 md:w-5 md:h-5" />
               </button>
               
               <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title}
-                className="w-full h-auto max-h-[70vh] object-contain"
+                className="w-full h-auto max-h-[60vh] md:max-h-[70vh] object-contain"
               />
               
-              <div className="p-6">
+              <div className="p-4 md:p-6">
                 <span className="text-minimal text-primary">{selectedProject.category}</span>
-                <h3 className="text-2xl font-heading font-bold mt-1">{selectedProject.title}</h3>
-                <p className="text-muted-foreground">Client: {selectedProject.client}</p>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mt-1">{selectedProject.title}</h3>
+                <p className="text-muted-foreground text-sm md:text-base">Client: {selectedProject.client}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -205,11 +205,11 @@ const Portfolio = () => {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="py-32 bg-foreground">
-        <div className="container mx-auto px-6">
+      <section className="py-16 md:py-24 lg:py-32 bg-foreground">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
-              className="text-display text-4xl md:text-6xl text-background mb-8"
+              className="text-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-background mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -218,14 +218,14 @@ const Portfolio = () => {
             </motion.h2>
             <motion.a 
               href="/contact"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-full font-medium transition-all group"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all group text-sm sm:text-base"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
               Demander un devis gratuit
-              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </motion.a>
           </div>
         </div>

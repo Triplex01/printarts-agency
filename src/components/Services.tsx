@@ -62,19 +62,19 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-32 bg-background overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-16 md:py-24 lg:py-32 bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div 
-            className="mb-20"
+            className="mb-12 md:mb-16 lg:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-minimal text-primary mb-4">NOS SERVICES</p>
-            <h2 className="text-display text-4xl md:text-5xl lg:text-6xl max-w-4xl">
+            <p className="text-minimal text-primary mb-3 md:mb-4">NOS SERVICES</p>
+            <h2 className="text-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl max-w-4xl leading-tight">
               Le design est l'API entre vision et réalité. Considérez-nous comme 
               <span className="text-primary"> votre passerelle</span>.
             </h2>
@@ -82,7 +82,7 @@ const Services = () => {
           
           {/* Main Services Grid */}
           <motion.div 
-            className="grid md:grid-cols-3 gap-8 mb-20"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 md:mb-16 lg:mb-20"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -91,7 +91,7 @@ const Services = () => {
             {mainServices.map((service, index) => (
               <motion.div 
                 key={index} 
-                className="group relative p-8 rounded-2xl border border-border hover:border-primary/30 bg-card hover:bg-muted/50 transition-all duration-500 hover-lift overflow-hidden"
+                className="group relative p-5 sm:p-6 lg:p-8 rounded-2xl border border-border hover:border-primary/30 bg-card hover:bg-muted/50 transition-all duration-500 hover-lift overflow-hidden"
                 variants={itemVariants}
               >
                 {/* Service Image Background */}
@@ -104,13 +104,13 @@ const Services = () => {
                 </div>
                 
                 <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                    <service.icon className="w-7 h-7 text-foreground group-hover:text-primary transition-colors" />
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-muted flex items-center justify-center mb-4 lg:mb-6 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <service.icon className="w-6 h-6 lg:w-7 lg:h-7 text-foreground group-hover:text-primary transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-4 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl lg:text-2xl font-heading font-bold mb-3 lg:mb-4 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -120,28 +120,28 @@ const Services = () => {
 
           {/* All Services List */}
           <motion.div 
-            className="border-t border-border pt-12"
+            className="border-t border-border pt-8 md:pt-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <p className="text-minimal text-primary mb-8">TOUTES NOS EXPERTISES</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <p className="text-minimal text-primary mb-6 md:mb-8">TOUTES NOS EXPERTISES</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {allServices.map((service, index) => (
                 <motion.div 
                   key={index} 
-                  className="group relative flex items-center gap-4 p-4 rounded-xl hover:bg-muted/50 transition-all duration-300 cursor-pointer overflow-hidden"
+                  className="group relative flex items-center gap-3 lg:gap-4 p-3 lg:p-4 rounded-xl hover:bg-muted/50 transition-all duration-300 cursor-pointer overflow-hidden"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
                   whileHover={{ x: 5 }}
                 >
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                    <service.icon className="w-4 h-4 lg:w-5 lg:h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
-                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                     {service.name}
                   </span>
                 </motion.div>
