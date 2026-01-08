@@ -20,7 +20,7 @@ const Hero = () => {
     }} />
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div className="max-w-5xl" initial={{
         opacity: 0,
         y: 40
@@ -31,12 +31,12 @@ const Hero = () => {
         duration: 0.8,
         ease: "easeOut"
       }}>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl leading-[1.15] tracking-tight font-semibold mb-8 text-foreground/90 md:text-6xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.15] tracking-tight font-semibold mb-6 md:mb-8 text-foreground/90">
             Du rêve au déploiement, nous donnons vie aux idées des{" "}
             <span className="text-primary font-bold">conquérants</span> grâce à un design percutant.
           </h1>
           
-          <motion.p className="text-body text-muted-foreground max-w-xl mb-10" initial={{
+          <motion.p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mb-8 md:mb-10" initial={{
           opacity: 0
         }} animate={{
           opacity: 1

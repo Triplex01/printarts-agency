@@ -29,10 +29,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-32 bg-background overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-16 md:py-24 lg:py-32 bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-20">
             {/* Left Column */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -40,13 +40,13 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-minimal text-primary mb-4">LE STUDIO</p>
-              <h2 className="text-display text-4xl md:text-5xl mb-8">
+              <p className="text-minimal text-primary mb-3 md:mb-4">LE STUDIO</p>
+              <h2 className="text-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight">
                 Votre partenaire de confiance en 
                 <span className="text-primary"> Côte d'Ivoire</span>
               </h2>
               
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-4 md:space-y-6 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
                 <p>
                   Depuis plus de 10 ans, <strong className="text-foreground">PRINT'S ARTS MULTIMEDIA</strong> accompagne 
                   les entreprises dans leur communication interne et externe. À l'écoute de 
@@ -113,20 +113,20 @@ const About = () => {
               </div>
               
               {/* Stats */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {stats.map((stat, index) => (
                   <motion.div 
                     key={index}
-                    className="bg-muted/50 rounded-2xl p-6 text-center group hover:bg-primary/10 transition-colors"
+                    className="bg-muted/50 rounded-xl md:rounded-2xl p-4 md:p-6 text-center group hover:bg-primary/10 transition-colors"
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
                   >
-                    <stat.icon className="w-6 h-6 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                    <p className="text-3xl font-heading font-bold mb-1 group-hover:text-primary transition-colors">{stat.value}</p>
-                    <p className="text-minimal text-muted-foreground">{stat.label}</p>
+                    <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-primary mx-auto mb-2 md:mb-3 group-hover:scale-110 transition-transform" />
+                    <p className="text-2xl md:text-3xl font-heading font-bold mb-1 group-hover:text-primary transition-colors">{stat.value}</p>
+                    <p className="text-xs md:text-minimal text-muted-foreground">{stat.label}</p>
                   </motion.div>
                 ))}
               </div>

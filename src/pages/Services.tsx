@@ -86,19 +86,19 @@ const Services = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-24 md:pt-32 pb-12 md:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-50" />
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="max-w-7xl mx-auto text-center">
             <motion.p 
-              className="text-minimal text-primary mb-4"
+              className="text-minimal text-primary mb-3 md:mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
               NOS SERVICES
             </motion.p>
             <motion.h1 
-              className="text-display text-5xl md:text-7xl lg:text-8xl mb-8"
+              className="text-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
@@ -106,7 +106,7 @@ const Services = () => {
               Solutions complètes de <span className="text-primary">communication</span>
             </motion.h1>
             <motion.p 
-              className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -119,11 +119,11 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="pb-32">
-        <div className="container mx-auto px-6">
+      <section className="pb-16 md:pb-24 lg:pb-32">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div 
-              className="grid md:grid-cols-2 gap-8"
+              className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -137,15 +137,15 @@ const Services = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -8 }}
-                  className={`group relative bg-gradient-to-br ${service.color} rounded-3xl p-8 md:p-10 border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden`}
+                  className={`group relative bg-gradient-to-br ${service.color} rounded-xl md:rounded-2xl lg:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden`}
                 >
                   {/* Background Decoration */}
                   <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  <div className="relative flex flex-col md:flex-row items-start gap-6">
+                  <div className="relative flex flex-col sm:flex-row items-start gap-4 md:gap-6">
                     {/* Illustration */}
                     <motion.div 
-                      className="w-24 h-24 md:w-32 md:h-32 flex-shrink-0"
+                      className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -157,24 +157,24 @@ const Services = () => {
                     </motion.div>
                     
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="text-4xl font-heading font-bold text-primary/30">
+                      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-primary/30">
                           {service.number}
                         </span>
-                        <h2 className="text-xl md:text-2xl font-heading font-bold group-hover:text-primary transition-colors">
+                        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-heading font-bold group-hover:text-primary transition-colors">
                           {service.title}
                         </h2>
                       </div>
                       
-                      <p className="text-muted-foreground leading-relaxed mb-6">
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4 md:mb-6">
                         {service.description}
                       </p>
                       
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 md:mb-6">
                         {service.features.map((feature, idx) => (
                           <span 
                             key={idx}
-                            className="text-xs px-3 py-1.5 rounded-full bg-background/80 text-foreground font-medium border border-border"
+                            className="text-[10px] sm:text-xs px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-background/80 text-foreground font-medium border border-border"
                           >
                             {feature}
                           </span>
@@ -183,11 +183,11 @@ const Services = () => {
                       
                       <motion.a 
                         href="/contact"
-                        className="inline-flex items-center gap-2 text-primary font-medium group/link"
+                        className="inline-flex items-center gap-2 text-primary font-medium group/link text-sm md:text-base"
                         whileHover={{ x: 5 }}
                       >
                         En savoir plus
-                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
                       </motion.a>
                     </div>
                   </div>
@@ -199,7 +199,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-foreground relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-foreground relative overflow-hidden">
         <motion.div
           className="absolute inset-0 opacity-10"
           style={{
@@ -209,10 +209,10 @@ const Services = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-4 sm:px-6 relative">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
-              className="text-display text-4xl md:text-6xl text-background mb-8"
+              className="text-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-background mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -220,7 +220,7 @@ const Services = () => {
               Prêt à transformer votre <span className="text-primary">vision</span> ?
             </motion.h2>
             <motion.p 
-              className="text-xl text-background/70 mb-12"
+              className="text-base sm:text-lg md:text-xl text-background/70 mb-8 md:mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -230,7 +230,7 @@ const Services = () => {
             </motion.p>
             <motion.a 
               href="/contact"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-full font-medium transition-all group"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all group text-sm sm:text-base"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -239,7 +239,7 @@ const Services = () => {
               whileTap={{ scale: 0.98 }}
             >
               Demander un devis gratuit
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </div>
         </div>

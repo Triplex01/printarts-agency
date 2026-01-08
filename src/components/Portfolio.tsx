@@ -52,19 +52,19 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="work" className="py-32 bg-muted/30 overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="work" className="py-16 md:py-24 lg:py-32 bg-muted/30 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div 
-            className="mb-20"
+            className="mb-12 md:mb-16 lg:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-minimal text-primary mb-4">NOS RÉALISATIONS</p>
-            <h2 className="text-display text-4xl md:text-5xl lg:text-6xl max-w-4xl">
+            <p className="text-minimal text-primary mb-3 md:mb-4">NOS RÉALISATIONS</p>
+            <h2 className="text-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl max-w-4xl leading-tight">
               Du rêve au déploiement, nous donnons vie aux idées des innovateurs grâce à un 
               <span className="text-primary"> design percutant</span>.
             </h2>
@@ -72,7 +72,7 @@ const Portfolio = () => {
           
           {/* Projects Grid */}
           <motion.div 
-            className="grid md:grid-cols-2 gap-8"
+            className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -84,7 +84,7 @@ const Portfolio = () => {
                 className="group cursor-pointer"
                 variants={itemVariants}
               >
-                <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
+                <div className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3]">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -93,21 +93,21 @@ const Portfolio = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Category Badge */}
-                  <div className="absolute top-6 left-6 bg-primary/90 text-primary-foreground px-4 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 lg:top-6 lg:left-6 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-2 group-hover:translate-y-0">
                     {project.category}
                   </div>
                   
-                  <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <h3 className="text-xl md:text-2xl font-heading font-bold text-background">
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 lg:bottom-6 lg:left-6 lg:right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-background">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-background/80 mt-2">
+                    <p className="text-xs sm:text-sm text-background/80 mt-1 sm:mt-2 line-clamp-2">
                       {project.description}
                     </p>
                   </div>
                   
-                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-75 group-hover:scale-100">
-                    <ArrowUpRight className="w-5 h-5 text-primary-foreground" />
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-75 group-hover:scale-100">
+                    <ArrowUpRight className="w-4 h-4 lg:w-5 lg:h-5 text-primary-foreground" />
                   </div>
                 </div>
               </motion.div>
