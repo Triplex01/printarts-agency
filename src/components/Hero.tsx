@@ -31,7 +31,7 @@ const Hero = () => {
         duration: 0.8,
         ease: "easeOut"
       }}>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight font-semibold mb-8 text-foreground/90">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl leading-[1.15] tracking-tight font-semibold mb-8 text-foreground/90 md:text-6xl">
             Du rêve au déploiement, nous donnons vie aux idées des{" "}
             <span className="text-primary font-bold">conquérants</span> grâce à un design percutant.
           </h1>
