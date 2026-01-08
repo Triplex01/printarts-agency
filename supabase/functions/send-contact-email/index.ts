@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { Resend } from "npm:resend@3.2.0";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -12,6 +13,7 @@ interface ContactFormData {
   company?: string;
   service: string;
   message: string;
+  recaptchaToken: string;
 }
 
 serve(async (req) => {
@@ -22,13 +24,37 @@ serve(async (req) => {
 
   try {
     const formData: ContactFormData = await req.json();
-    
-    const { name, email, phone, company, service, message } = formData;
-    
+
+    const { name, email, phone, company, service, message, recaptchaToken } = formData;
+
     // Validate required fields
-    if (!name || !email || !service || !message) {
+    if (!name || !email || !service || !message || !recaptchaToken) {
       return new Response(
         JSON.stringify({ error: 'Champs obligatoires manquants' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Verify reCAPTCHA
+    const recaptchaSecret = Deno.env.get('RECAPTCHA_SECRET_KEY');
+    if (!recaptchaSecret) {
+      console.error('RECAPTCHA_SECRET_KEY not set');
+      return new Response(
+        JSON.stringify({ error: 'Configuration error' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const verifyResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${recaptchaSecret}&response=${recaptchaToken}`
+    });
+
+    const verifyData = await verifyResponse.json();
+    if (!verifyData.success) {
+      return new Response(
+        JSON.stringify({ error: 'Vérification reCAPTCHA échouée' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -47,17 +73,20 @@ serve(async (req) => {
           .label { font-weight: bold; color: #c53030; margin-bottom: 5px; display: block; }
           .value { background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #c53030; }
           .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
+          .intro { font-size: 16px; margin-bottom: 20px; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1>📬 Nouvelle demande de devis</h1>
+            <h1>📬 Nouvelle demande de devis reçue</h1>
             <p>Via le site Print's Arts Multimedia</p>
           </div>
           <div class="content">
+            <p class="intro">Bonjour l'équipe Print's Arts Multimedia,</p>
+            <p>Une nouvelle demande de devis a été soumise via le formulaire de contact de notre site web. Voici les détails :</p>
             <div class="field">
-              <span class="label">👤 Nom</span>
+              <span class="label">👤 Nom du client</span>
               <div class="value">${name}</div>
             </div>
             <div class="field">
@@ -81,36 +110,42 @@ serve(async (req) => {
               <div class="value">${service}</div>
             </div>
             <div class="field">
-              <span class="label">💬 Message</span>
+              <span class="label">💬 Description du projet</span>
               <div class="value">${message.replace(/\n/g, '<br>')}</div>
             </div>
+            <p>Veuillez contacter le client dans les plus brefs délais pour discuter de leur projet.</p>
           </div>
           <div class="footer">
-            <p>Ce message a été envoyé depuis le formulaire de contact du site web.</p>
-            <p>© ${new Date().getFullYear()} Print's Arts Multimedia</p>
+            <p>Ce message a été envoyé automatiquement depuis le formulaire de contact du site web.</p>
+            <p>© ${new Date().getFullYear()} Print's Arts Multimedia - L'agence des conquérants</p>
           </div>
         </div>
       </body>
       </html>
     `;
 
-    // Send email using a simple SMTP simulation
-    // For now, we'll log the email and return success
-    // In production, you would integrate with an email service
-    console.log('Email to send:', {
+    // Send email using Resend
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY not set');
+      return new Response(
+        JSON.stringify({ error: 'Configuration error' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const resend = new Resend(resendApiKey);
+    await resend.emails.send({
+      from: 'contact@printsartsmultimedia.com',
       to: 'email@printsartsmultimedia.com',
-      from: email,
       subject: `Nouvelle demande de devis - ${name}`,
       html: htmlContent
     });
 
-    // Store the contact request for later processing
-    // This ensures no message is lost even without email service
-    
     return new Response(
-      JSON.stringify({ 
-        success: true, 
-        message: 'Votre demande a été envoyée avec succès' 
+      JSON.stringify({
+        success: true,
+        message: 'Votre demande a été envoyée avec succès'
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
