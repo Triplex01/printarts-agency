@@ -31,7 +31,7 @@ const Hero = () => {
         duration: 0.8,
         ease: "easeOut"
       }}>
-          <h1 className="text-display sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] mb-8 text-4xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight font-bold mb-8">
             Du rêve au déploiement, nous donnons vie aux idées des{" "}
             <span className="text-primary">conquérants</span> grâce à un design percutant.
           </h1>
