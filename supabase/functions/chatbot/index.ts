@@ -12,7 +12,7 @@ const SYSTEM_PROMPT = `Tu es PAMM, l'assistant virtuel intelligent de Print's Ar
 - Slogan: "Du rêve au déploiement, nous donnons vie aux idées des conquérants grâce à un design percutant"
 - Localisation: Cocody Riviera 3, Abidjan, Côte d'Ivoire
 - Email: email@printsartsmultimedia.com
-- Téléphone: +225 07 08 09 10 11
+- Téléphone: +225 07 09 77 96 79
 
 🛠️ NOS SERVICES:
 1. **Design Graphique**: Logos, identité visuelle, affiches, flyers, brochures
