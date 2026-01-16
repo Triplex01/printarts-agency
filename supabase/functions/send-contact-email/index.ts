@@ -12,7 +12,6 @@ interface ContactFormData {
   company?: string;
   service: string;
   message: string;
-  recaptchaToken: string;
 }
 
 serve(async (req) => {
@@ -24,36 +23,12 @@ serve(async (req) => {
   try {
     const formData: ContactFormData = await req.json();
 
-    const { name, email, phone, company, service, message, recaptchaToken } = formData;
+    const { name, email, phone, company, service, message } = formData;
 
     // Validate required fields
-    if (!name || !email || !service || !message || !recaptchaToken) {
+    if (!name || !email || !service || !message) {
       return new Response(
         JSON.stringify({ error: 'Champs obligatoires manquants' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    // Verify reCAPTCHA
-    const recaptchaSecret = Deno.env.get('RECAPTCHA_SECRET_KEY');
-    if (!recaptchaSecret) {
-      console.error('RECAPTCHA_SECRET_KEY not set');
-      return new Response(
-        JSON.stringify({ error: 'Configuration error' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    const verifyResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${recaptchaSecret}&response=${recaptchaToken}`
-    });
-
-    const verifyData = await verifyResponse.json();
-    if (!verifyData.success) {
-      return new Response(
-        JSON.stringify({ error: 'Vérification reCAPTCHA échouée' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
