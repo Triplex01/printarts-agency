@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -256,12 +257,14 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <p className="text-background/60 text-sm">
-              © 2024 Print's Arts Multimedia. Tous droits réservés. L'agence des conquérants.
+              © {new Date().getFullYear()} Print's Arts Multimedia. Tous droits réservés. L'agence des conquérants.
             </p>
-            <div className="flex items-center gap-6">
-              <a href="/portfolio" className="text-background/60 hover:text-primary text-sm transition-colors">Portfolio</a>
-              <a href="/services" className="text-background/60 hover:text-primary text-sm transition-colors">Services</a>
-              <a href="/about" className="text-background/60 hover:text-primary text-sm transition-colors">À propos</a>
+            <div className="flex items-center flex-wrap gap-4 md:gap-6">
+              <Link to="/portfolio" className="text-background/60 hover:text-primary text-sm transition-colors">Portfolio</Link>
+              <Link to="/services" className="text-background/60 hover:text-primary text-sm transition-colors">Services</Link>
+              <Link to="/about" className="text-background/60 hover:text-primary text-sm transition-colors">À propos</Link>
+              <Link to="/confidentialite" className="text-background/60 hover:text-primary text-sm transition-colors">Confidentialité</Link>
+              <Link to="/conditions" className="text-background/60 hover:text-primary text-sm transition-colors">CGU</Link>
             </div>
           </motion.div>
         </div>
