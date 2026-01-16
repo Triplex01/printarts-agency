@@ -47,11 +47,17 @@ const Navigation = () => {
         <div className="flex lg:hidden items-center gap-2">
           <ThemeToggle />
           <Button
-            variant="ghost"
-            size="sm"
+            variant="outline"
+            size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="w-10 h-10 border-2 border-foreground/20 hover:border-foreground/40 hover:bg-muted"
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
-            {isMenuOpen ? '✕' : '☰'}
+            {isMenuOpen ? (
+              <span className="text-lg font-bold text-foreground">✕</span>
+            ) : (
+              <span className="text-xl font-bold text-foreground">☰</span>
+            )}
           </Button>
         </div>
       </div>

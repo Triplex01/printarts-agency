@@ -1,5 +1,4 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { Resend } from "npm:resend@3.2.0";
+import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -124,23 +123,39 @@ serve(async (req) => {
       </html>
     `;
 
-    // Send email using Resend
+    // Send email using Resend API directly
     const resendApiKey = Deno.env.get('RESEND_API_KEY');
     if (!resendApiKey) {
       console.error('RESEND_API_KEY not set');
       return new Response(
-        JSON.stringify({ error: 'Configuration error' }),
+        JSON.stringify({ error: 'Configuration email manquante' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    const resend = new Resend(resendApiKey);
-    await resend.emails.send({
-      from: 'contact@printsartsmultimedia.com',
-      to: 'email@printsartsmultimedia.com',
-      subject: `Nouvelle demande de devis - ${name}`,
-      html: htmlContent
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Print\'s Arts Multimedia <contact@printsartsmultimedia.com>',
+        to: ['email@printsartsmultimedia.com'],
+        subject: `Nouvelle demande de devis - ${name}`,
+        html: htmlContent,
+        reply_to: email
+      })
     });
+
+    if (!emailResponse.ok) {
+      const errorData = await emailResponse.text();
+      console.error('Resend API error:', errorData);
+      return new Response(
+        JSON.stringify({ error: 'Erreur lors de l\'envoi de l\'email' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
     return new Response(
       JSON.stringify({
