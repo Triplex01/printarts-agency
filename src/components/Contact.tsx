@@ -3,30 +3,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, ArrowRight, Send, Facebook, Instagram, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    const recaptchaToken = recaptchaRef.current?.getValue();
-    if (!recaptchaToken) {
-      toast({
-        title: "Erreur",
-        description: "Veuillez vérifier que vous n'êtes pas un robot.",
-        variant: "destructive"
-      });
-      setIsSubmitting(false);
-      return;
-    }
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -36,7 +23,6 @@ const Contact = () => {
       company: formData.get('company') as string,
       service: formData.get('service') as string,
       message: formData.get('message') as string,
-      recaptchaToken,
     };
 
     try {
@@ -52,7 +38,6 @@ const Contact = () => {
       });
 
       (e.target as HTMLFormElement).reset();
-      recaptchaRef.current?.reset();
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
@@ -242,9 +227,6 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="flex justify-center">
-                  <ReCAPTCHA ref={recaptchaRef} sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" />
-                </div>
 
                 <Button
                   type="submit"
