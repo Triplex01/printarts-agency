@@ -132,4 +132,4 @@ Disallow: /*?*
 Crawl-delay: 2
 
 # Sitemap
-Sitemap: https://printsartsmultimedia.com/sitemap.xml
+Sitemap: https://printarts-agency.lovable.app/sitemap.xml
